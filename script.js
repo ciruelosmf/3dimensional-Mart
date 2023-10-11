@@ -7,38 +7,38 @@ import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
- 
- 
- import { PerspectiveCamera, CameraHelper } from 'three';
- 
- 
+
+
+import { PerspectiveCamera, CameraHelper } from 'three';
+
+
 
 
 
 
 
 // Set up the scene
- 
-
-			let cameraRig, activeCamera, activeHelper;
-			let cameraPerspective, cameraOrtho;
-			let cameraPerspectiveHelper, cameraOrthoHelper;
-			const frustumSize = 600;
-			let SCREEN_WIDTH = window.innerWidth;
-			let SCREEN_HEIGHT = window.innerHeight;
-			let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
 
+let cameraRig, activeCamera, activeHelper;
+let cameraPerspective, cameraOrtho;
+let cameraPerspectiveHelper, cameraOrthoHelper;
+const frustumSize = 600;
+let SCREEN_WIDTH = window.innerWidth;
+let SCREEN_HEIGHT = window.innerHeight;
+let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
-const  scene = new THREE.Scene();
+
+
+const scene = new THREE.Scene();
 // scene.background = new THREE.Color(0xd51c1c);
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 camera.position.z = 20;
-camera.position.y =  0;
-camera.position.set(0, 12,26);     
-scene.add( camera  );
+camera.position.y = 0;
+camera.position.set(0, 12, 26);
+scene.add(camera);
 
- 
+
 
 
 
@@ -61,8 +61,8 @@ scene.add(gridHelper);
 
 
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
 
 
@@ -71,20 +71,20 @@ document.body.appendChild( renderer.domElement );
 
 // LIGHTS -------- LIGHTS -------- LIGHTS -------- LIGHTS
 // LIGHTS -------- LIGHTS -------- LIGHTS -------- LIGHTS
- // LIGHTS -------- LIGHTS -------- LIGHTS -------- LIGHTS
 // LIGHTS -------- LIGHTS -------- LIGHTS -------- LIGHTS
-const light = new THREE.AmbientLight( 0x404040, 68 );
-scene.add(light); 
+// LIGHTS -------- LIGHTS -------- LIGHTS -------- LIGHTS
+const light = new THREE.AmbientLight(0x404040, 68);
+scene.add(light);
 
-const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.5 );
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(0, 20, 6);
-scene.add( directionalLight );
+scene.add(directionalLight);
 
- 
+
 
 // const pointLightHelper = new THREE.PointLightHelper(light);
 // scene.add(pointLightHelper);
- 
+
 
 
 
@@ -114,20 +114,8 @@ let currentRotationAngle = 0;
 
 
 
- const axesHelper = new THREE.AxesHelper( 5 );
- scene.add( axesHelper );
-
-
-
-
-
-
-
-
-
-
-
- 
+//const axesHelper = new THREE.AxesHelper(5);
+//scene.add(axesHelper);
 
 
 
@@ -140,121 +128,37 @@ let currentRotationAngle = 0;
 
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ---------------------------------------------
 // ---------------------------------------------
 // ---------        LoAD TITLE      ------------
 // ---------------------------------------------
 // ---------------------------------------------
 
- const loader_title = new GLTFLoader();                 // MAIN TITLE 
-    loader_title.load("3dmart_title_text2.gltf", (gltf) => {
-    const model_title = gltf.scene;
-    model_title.traverse((child) => {
-        if (child.isMesh) {
-            const newMaterial = new THREE.MeshBasicMaterial({ color: 0x404040 }); // Red color
-            child.material = newMaterial;
-        }
-    });  
-     model_title.position.set(0, 22, -41);
-     model_title.scale.set(5, 5, 2); 
-     scene.add(model_title);        
-  });     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const loader_title_patr = new GLTFLoader();
-  loader_title_patr.load("ihpone_char_gtlf.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(-9, -6, -18);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, 0);
-});
-
-    loader_title_patr.load("discl2.gltf", (gltf) => {      
-    const loader_title_patr = gltf.scene;
-     loader_title_patr.position.set(0, -32, 48);
-     loader_title_patr.scale.set(1, 1, 1); 
-     scene.add(loader_title_patr);  
-     console.log(123)    
-     loader_title_patr.rotation.set( 0, 0, 0);
+const loader_title = new GLTFLoader();                 // MAIN TITLE 
+loader_title.load("3dmart_title_text2.gltf", (gltf) => {
+  const model_title = gltf.scene;
+  model_title.traverse((child) => {
+    if (child.isMesh) {
+      const newMaterial = new THREE.MeshBasicMaterial({ color: 0x404040 }); // Red color
+      child.material = newMaterial;
+    }
   });
- 
- 
-   
-  loader_title_patr.load("stanley.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(-41, -3, 19);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, -.7);
-
-});
- 
-    loader_title_patr.load("purif_text.gltf", (gltf) => {      
-    const loader_title_patr = gltf.scene;
-     loader_title_patr.position.set(-22, -3, -8);
-     loader_title_patr.scale.set(3, 3, 3); 
-     scene.add(loader_title_patr);      
-     loader_title_patr.rotation.set( 1.5, 0, -0.3);
-
-  });
- 
-  loader_title_patr.load("vacum_text.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(17, -6, -9);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, 0.5);
-
-});
-
-loader_title_patr.load("shoe_text.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(-34, -4, 3);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, -1.3  );
-
-});
-
-loader_title_patr.load("cook_text.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(9, 15, -33);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, 0);
-
-});
-
-loader_title_patr.load("ring_text.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(33, -9, 0);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, 1.2);
-
-});
-
-loader_title_patr.load("tupp_text.gltf", (gltf) => {      
-  const loader_title_patr = gltf.scene;
-   loader_title_patr.position.set(39, -5, 20);
-   loader_title_patr.scale.set(3, 3, 3); 
-   scene.add(loader_title_patr);      
-   loader_title_patr.rotation.set( 1.5, 0, 1.8);
-
+  model_title.position.set(0, 22, -41);
+  model_title.scale.set(5, 5, 2);
+  scene.add(model_title);
 });
 
 
@@ -270,6 +174,74 @@ loader_title_patr.load("tupp_text.gltf", (gltf) => {
 
 
 
+const loader_title_patr = new GLTFLoader();
+loader_title_patr.load("ihpone_char_gtlf.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(-9, -6, -18);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, 0);
+});
+
+loader_title_patr.load("stanley.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(-32, 18, -8);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, -.5);
+});
+
+loader_title_patr.load("purif_text.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(-31, 7, -8);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, -0.3);
+});
+
+loader_title_patr.load("vacum_text.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(37, -12, -6);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, 0.5);
+});
+
+loader_title_patr.load("shoe_text.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(-26, -12, -8);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, -0.3);
+
+});
+
+loader_title_patr.load("cook_text.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(9, 15, -33);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, 0);
+
+});
+
+loader_title_patr.load("ring_text.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(37, 4, -5);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, 0.5);
+
+});
+
+loader_title_patr.load("tupp_text.gltf", (gltf) => {
+  const loader_title_patr = gltf.scene;
+  loader_title_patr.position.set(37, 16, -5);
+  loader_title_patr.scale.set(3, 3, 3);
+  scene.add(loader_title_patr);
+  loader_title_patr.rotation.set(1.5, 0, 0.5);
+
+});
 
 
 
@@ -281,32 +253,46 @@ loader_title_patr.load("tupp_text.gltf", (gltf) => {
 
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 let model2;
 async function loadModel_patr() {
-    const loader = new GLTFLoader();
-    const gltf = await loader.loadAsync("vacu.gltf");
-    model2 = gltf.scene; // Assign the loaded object to the variable
-    model2.position.set(20, -1, -10);
-    model2.scale.set(3, 3, 3); // Load BOOK
-    model2.rotation.set( 1, 1, 0);
-    model2.traverse(child => {
-        if (child.isMesh) {
-            child.userData.link = "https://amzn.to/46plHzi";
-        }
-    });
-    scene.add(model2);
-    model2.addEventListener("click", () => {
-        const link = model2.userData.link;
-        if (link) {             
-            window.open(link, "_blank");
-        }
-    });
-    animate();
+  const loader = new GLTFLoader();
+  const gltf = await loader.loadAsync("vacu.gltf");
+  model2 = gltf.scene; // Assign the loaded object to the variable
+  model2.position.set(32, -14, -8);
+  model2.scale.set(3, 3, 3); // Load BOOK
+  model2.rotation.set(1, 1, 0);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/46plHzi";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link = model2.userData.link;
+    if (link) {
+      window.open(link, "_blank");
+    }
+  });
+  animate();
 }
 loadModel_patr();
 
@@ -325,25 +311,25 @@ loadModel_patr();
 let model3;
 // Define a function to load the model   SI FUNCIONA ROTACION
 async function loadModel_ig() {
-    const loader = new GLTFLoader();
-    const gltf = await loader.loadAsync("airp.gltf");
-    model3 = gltf.scene; // Assign the loaded object to the variable
-    model3.position.set(-18, -1, -10);
-    model3.scale.set(2, 2, 2); // Load BOOK
-    model3.traverse(child => {
-        if (child.isMesh) {
-            child.userData.link = "https://amzn.to/3EW7Cxe";
-        }
-    });
-    scene.add(model3);
-    model3.addEventListener("click", () => {
-        const link = model3.userData.link;
-        if (link) {             
-            window.open(link, "_blank");
-        }
-    });
-    animate();
-}               loadModel_ig();
+  const loader = new GLTFLoader();
+  const gltf = await loader.loadAsync("airp.gltf");
+  model3 = gltf.scene; // Assign the loaded object to the variable
+  model3.position.set(-35, 4, -8);
+  model3.scale.set(2, 2, 2); // Load BOOK
+  model3.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3EW7Cxe";
+    }
+  });
+  scene.add(model3);
+  model3.addEventListener("click", () => {
+    const link = model3.userData.link;
+    if (link) {
+      window.open(link, "_blank");
+    }
+  });
+  animate();
+} loadModel_ig();
 
 
 
@@ -358,115 +344,166 @@ const loader2 = new GLTFLoader();
 loader2.load("charg.gltf", (gltf) => {
   const model2 = gltf.scene;
   // Position and scale the model as needed
-    model2.position.set(0, -1, -18);
-     model2.scale.set(5, 5, 5);
-     model2.rotation.set(4, 0, 0);
-       model2.traverse(child => {
-       if (child.isMesh) {
-           child.userData.link = "https://amzn.to/3rsBH4C";
-           child.userData.name = "elago 3 in 1 Charging Station Compatible with Apple Products";
-            }
-          });
-  scene.add(model2);   
-      model2.addEventListener("click", () => {
-        const link2 = model2.userData.link;
-        if (link2) {          
-            window.open(link2, "_blank");
-        }})
-        ;});
+  model2.position.set(0, -1, -18);
+  model2.scale.set(5, 5, 5);
+  model2.rotation.set(4, 0, 0);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3rsBH4C";
+      child.userData.name = "elago 3 in 1 Charging Station Compatible with Apple Products";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link2 = model2.userData.link;
+    if (link2) {
+      window.open(link2, "_blank");
+    }
+  })
+    ;
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
  
-
-
-
  
+loader2.load("rice.glb", (gltf) => {
+  const model2 = gltf.scene;
+  // Position and scale the model as needed
+  model2.position.set(1, 15, -34);
+  //model2.scale.set(5, 5, 5);
+  model2.rotation.set(0, 0, 0);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3EStcD0";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link2 = model2.userData.link;
+    if (link2) {
+      window.open(link2, "_blank");
+    }
+  })
+    ;
+});
+
+
+
+
+
+
+
+
+
+
+
+
 loader2.load("ring.gltf", (gltf) => {
-const model2 = gltf.scene;
-model2.position.set(37, -1, 6);
-             model2.scale.set(5, 5, 5);
-             model2.rotation.set(2, 0, -5);
-               model2.traverse(child => {
-               if (child.isMesh) {
-                   child.userData.link = "https://amzn.to/3LzDoUG";
-                    }                  });
-          scene.add(model2);   
-              model2.addEventListener("click", () => {
-                const link2 = model2.userData.link;
-                if (link2) {          
-                    window.open(link2, "_blank");
-                }})                ;});
+  const model2 = gltf.scene;
+  model2.position.set(32, 4, -8);
+  model2.scale.set(5, 5, 5);
+  model2.rotation.set(2, 0, -0.5);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3LzDoUG";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link2 = model2.userData.link;
+    if (link2) {
+      window.open(link2, "_blank");
+    }
+  });
+});
 
 
- 
 
 
 
 
- 
+
+
 
 loader2.load("shoes.gltf", (gltf) => {
-const model2 = gltf.scene;
-                    // Position and scale the model as needed
-                      model2.position.set(-31, -1, 0);
-                       model2.scale.set(5, 5, 5);
-                       model2.rotation.set(0, -0.2, -0.2);
-                         model2.traverse(child => {
-                         if (child.isMesh) {
-                             child.userData.link = "https://amzn.to/3LAiPHK";
-                              }
-                            });
-                    scene.add(model2);   
-                        model2.addEventListener("click", () => {
-                          const link2 = model2.userData.link;
-                          if (link2) {          
-                              window.open(link2, "_blank");
-                          }})
-                          ;});
- 
+  const model2 = gltf.scene;
+  // Position and scale the model as needed
+  model2.position.set(-32, -14, -8);
+  model2.scale.set(5, 5, 5);
+  model2.rotation.set(0, -0.2, -0.2);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3LAiPHK";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link2 = model2.userData.link;
+    if (link2) {
+      window.open(link2, "_blank");
+    }
+  })
+    ;
+});
+
 
 
 
 
 loader2.load("tupp.gltf", (gltf) => {
-                            const model2 = gltf.scene;
-                              model2.position.set(38, -1, 24);
-                               model2.scale.set(7, 7, 7);
-                               model2.rotation.set(0, 0, 0);
-                                 model2.traverse(child => {
-                                 if (child.isMesh) {
-                                     child.userData.link = "https://amzn.to/3Lw7SHi";
-                                      }
-                                    });
-                            scene.add(model2);   
-                                model2.addEventListener("click", () => {
-                                  const link2 = model2.userData.link;
-                                  if (link2) {          
-                                      window.open(link2, "_blank");
-                                  }})
-                                  ;});
+  const model2 = gltf.scene;
+  model2.position.set(32, 14, -8);
+  model2.scale.set(7, 7, 7);
+  model2.rotation.set(0, 0, 0);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3Lw7SHi";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link2 = model2.userData.link;
+    if (link2) {
+      window.open(link2, "_blank");
+    }
+  })
+    ;
+});
 
 
 
 
 loader2.load("tumb.gltf", (gltf) => {
-                                    const model2 = gltf.scene;
-                          model2.position.set(-35, -1, 15);
-                      model2.scale.set(5, 5, 5);
-                         model2.rotation.set(0, 0, 0);
-                                  model2.traverse(child => {
-                                         if (child.isMesh) {
-                                             child.userData.link = "https://amzn.to/3ruyotF";
-                                              }
-                                            });
-                                    scene.add(model2);   
-                                    model2.addEventListener("click", () => {
-                                          const link2 = model2.userData.link;
-                                          if (link2) {          
-                                              window.open(link2, "_blank");
-                                          }})
-;});
-   
+  const model2 = gltf.scene;
+  model2.position.set(-35, 14, -8);
+  model2.scale.set(5, 5, 5);
+  model2.rotation.set(0, 0, 0);
+  model2.traverse(child => {
+    if (child.isMesh) {
+      child.userData.link = "https://amzn.to/3ruyotF";
+    }
+  });
+  scene.add(model2);
+  model2.addEventListener("click", () => {
+    const link2 = model2.userData.link;
+    if (link2) {
+      window.open(link2, "_blank");
+    }
+  })
+    ;
+});
+
 
 
 
@@ -479,7 +516,7 @@ loader2.load("tumb.gltf", (gltf) => {
 
 
 const objLoader = new OBJLoader();
-const mtlLoader = new   MTLLoader();
+const mtlLoader = new MTLLoader();
 
 
 
@@ -492,9 +529,9 @@ mtlLoader.load('amal.mtl', (materiala) => {
     'amalogo.obj',
     (object) => {
       object.position.set(0, -36, 48);
-        
+
       scene.add(object);
- 
+
     },
     (xhr) => {
       // Progress callback (optional)
@@ -519,13 +556,48 @@ mtlLoader.load('amal.mtl', (materiala) => {
 
 
 
-mtlLoader.load('cokm.mtl', (materials) => {
+/* mtlLoader.load('cokm.mtl', (materials) => {
+  materials.preload(); // Preload materials for use in the OBJ loader
+  objLoader.setMaterials(materials);
+  objLoader.load(
+    'cok.obj',
+    (object) => {
+      object.position.set(1, 15, -34);
+      object.traverse(child => {
+        if (child.isMesh) {
+          child.userData.link = "https://amzn.to/3EStcD0";
+        }
+      });
+      scene.add(object);
+      object.addEventListener("click", () => {
+        const link2 = object.userData.link;
+        if (link2) {
+          window.open(link2, "_blank");
+        }
+      })
+    },
+    (xhr) => {
+      // Progress callback (optional)
+      console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+    },
+    (error) => {
+      console.error('An error occurred while loading the OBJ file: ', error);
+    }
+  );
+}); */
+
+
+
+
+
+
+  mtlLoader.load('discc.mtl', (materials) => {
     materials.preload(); // Preload materials for use in the OBJ loader
     objLoader.setMaterials(materials);
     objLoader.load(
-      'cok.obj',
+      'discc.obj',
       (object) => {
-        object.position.set(1,15,-34);
+        object.position.set(0, -32, 48);
         object.traverse(child => {
             if (child.isMesh) {
                 child.userData.link = "https://amzn.to/3EStcD0";
@@ -540,7 +612,7 @@ mtlLoader.load('cokm.mtl', (materials) => {
       },
       (xhr) => {
         // Progress callback (optional)
-        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+        console.log((xhr.loaded / xhr.total) * 100 + '% loaded222');
       },
       (error) => {
         console.error('An error occurred while loading the OBJ file: ', error);
@@ -551,9 +623,29 @@ mtlLoader.load('cokm.mtl', (materials) => {
 
 
 
- 
- 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*     // Load the OBJ file
     objLoader.load(
       'fires.obj',
@@ -655,28 +747,30 @@ if (isMobile) {
 // ---------        GLOE EFFECT     ------------
 // ---------------------------------------------
 // ---------------------------------------------
-                 
-
- 
 
 
 
 
 
 
- 
+
+
+
+
 
 
 
 
 //                                         Flag to track if orbiting should be disabled
 let disableOrbiting = false;
-  //                                   Function to disable orbiting
+//                                   Function to disable orbiting
 function disableOrbitControls() {
-    controls.enabled = false;}
+  controls.enabled = false;
+}
 //                                         Function to enable orbiting
 function enableOrbitControls() {
-    controls.enabled = true;}
+  controls.enabled = true;
+}
 
 
 
@@ -685,69 +779,73 @@ let isInsideObject = false;
 let clickedObject = null;
 
 function onObjectMouseDown(event) {
-    isMouseDown = true;
-    clickedObject = null;
+  isMouseDown = true;
+  clickedObject = null;
 
-    const mouse = new THREE.Vector2();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  const mouse = new THREE.Vector2();
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-    handleInteraction(mouse);
+  handleInteraction(mouse);
 }
 
 function onObjectMouseUp(event) {
-    if (isMouseDown && isInsideObject && clickedObject) {
-        const mouse = new THREE.Vector2();
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        handleInteraction(mouse);    }
-    isMouseDown = false;
-    isInsideObject = false;
-    clickedObject = null;
+  if (isMouseDown && isInsideObject && clickedObject) {
+    const mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    handleInteraction(mouse);
+  }
+  isMouseDown = false;
+  isInsideObject = false;
+  clickedObject = null;
 }
 
 function onObjectTouchStart(event) {
-    event.preventDefault();
-    isMouseDown = true;
-    clickedObject = null;
-    const touch = event.touches[0];
+  event.preventDefault();
+  isMouseDown = true;
+  clickedObject = null;
+  const touch = event.touches[0];
+  const mouse = new THREE.Vector2();
+  mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+  handleInteraction(mouse);
+}
+
+function onObjectTouchEnd(event) {
+  if (isMouseDown && isInsideObject && clickedObject) {
+    const touch = event.changedTouches[0];
     const mouse = new THREE.Vector2();
     mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
     handleInteraction(mouse);
-}
+  }
 
-function onObjectTouchEnd(event) {
-    if (isMouseDown && isInsideObject && clickedObject) {
-        const touch = event.changedTouches[0];
-        const mouse = new THREE.Vector2();
-        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
-        handleInteraction(mouse);    }
-
-    isMouseDown = false;
-    isInsideObject = false;
-    clickedObject = null;
+  isMouseDown = false;
+  isInsideObject = false;
+  clickedObject = null;
 }
 
 function handleInteraction(mouse) {
-    const raycaster = new THREE.Raycaster();
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(scene.children, true);
-      console.log(intersects[0].object,"intersects[0].object")
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(scene.children, true);
+  console.log(intersects[0].object, "intersects[0].object")
 
-    if (intersects.length > 0 && intersects[0].object.userData.link) {
-        isInsideObject = true;
-   
+  if (intersects.length > 0 && intersects[0].object.userData.link) {
+    isInsideObject = true;
 
-        clickedObject = intersects[0].object;
-        window.open(clickedObject.userData.link, "_blank");
-        disableOrbiting = true;
-        disableOrbitControls();
-    } else {
-        isInsideObject = false;
-              disableOrbiting = false;
-              enableOrbitControls();}}
+
+    clickedObject = intersects[0].object;
+    window.open(clickedObject.userData.link, "_blank");
+    disableOrbiting = true;
+    disableOrbitControls();
+  } else {
+    isInsideObject = false;
+    disableOrbiting = false;
+    enableOrbitControls();
+  }
+}
 
 window.addEventListener("mousedown", onObjectMouseDown);
 window.addEventListener("mouseup", onObjectMouseUp);
@@ -755,32 +853,32 @@ window.addEventListener("touchstart", onObjectTouchStart);
 window.addEventListener("touchend", onObjectTouchEnd);
 
 
- 
+
 
 let isTabActive = true; // Assume the tab is initially active
 
 // Listen for the window's visibilitychange event to track tab visibility
 document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        // Tab is no longer active, pause camera animations/controls
-        isTabActive = false;
-          isMouseDown = false;
-    isInsideObject = false;
-    clickedObject = null;
-        // Pause your camera controls/animations here
-    } else {
-        // Tab is active again, resume camera animations/controls
-        isTabActive = true;
-        // Resume your camera controls/animations here
-    }
-});
-
-window.addEventListener("blur", () => {
+  if (document.hidden) {
+    // Tab is no longer active, pause camera animations/controls
+    isTabActive = false;
     isMouseDown = false;
     isInsideObject = false;
     clickedObject = null;
-});  
- 
+    // Pause your camera controls/animations here
+  } else {
+    // Tab is active again, resume camera animations/controls
+    isTabActive = true;
+    // Resume your camera controls/animations here
+  }
+});
+
+window.addEventListener("blur", () => {
+  isMouseDown = false;
+  isInsideObject = false;
+  clickedObject = null;
+});
+
 
 
 
@@ -888,26 +986,26 @@ window.addEventListener("mouseup", onObjectMouseUp); */
 
 
 
-var controls = new OrbitControls( camera, renderer.domElement );
-     controls.enableDamping = true ;
+var controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
 controls.rotateSpeed = 0.3; // Adjust rotation speed
 controls.minDistance = 7;
 controls.maxDistance = 75.1;
-  
 
 
- /* 
+
+/* 
 // Render the scene funciona bien
 var animate = function () {
-	requestAnimationFrame( animate );
-  // Update rotation
-  // haloGroup.rotation.y += 0.002;
-  mesh.rotation.y = currentRotationAngle;
-  model2.rotation.y = currentRotationAngle;
-  
-	renderer.render( scene, camera );
+ requestAnimationFrame( animate );
+ // Update rotation
+ // haloGroup.rotation.y += 0.002;
+ mesh.rotation.y = currentRotationAngle;
+ model2.rotation.y = currentRotationAngle;
+ 
+ renderer.render( scene, camera );
 };
- */
+*/
 
 
 
@@ -920,46 +1018,46 @@ let isRotating = false;
 let rotationStartTime = 0;
 
 // Inside your animation/render loop
-var animate = function () {
-    requestAnimationFrame(animate);
- 
- 
-   
- 
+var animate = function() {
+  requestAnimationFrame(animate);
 
 
-/*     
-    const currentTime = Date.now();
-    if (!isRotating && currentTime - rotationStartTime > 2400) {
-        isRotating = true;
-        rotationStartTime = currentTime;
-        rotationSpeed2 = 0.005; // High rotation speed for half a second
-    }
 
-    if (isRotating && currentTime - rotationStartTime > 900) {
-        isRotating = false;
-        rotationSpeed2 = 0.03; // Return to normal rotation speed
-    }
 
-    // Check if the model is defined before accessing properties
-    if (model2) {
-        currentRotationAngle2 += rotationSpeed2;
-        model2.rotation.y = currentRotationAngle2; // Use 'model' here
-        model3.rotation.y = -(currentRotationAngle2)+22; // Use 'model' here
-      
-    }
-    currentRotationAngle += rotationSpeed    ; */
+
+
+  /*     
+      const currentTime = Date.now();
+      if (!isRotating && currentTime - rotationStartTime > 2400) {
+          isRotating = true;
+          rotationStartTime = currentTime;
+          rotationSpeed2 = 0.005; // High rotation speed for half a second
+      }
   
+      if (isRotating && currentTime - rotationStartTime > 900) {
+          isRotating = false;
+          rotationSpeed2 = 0.03; // Return to normal rotation speed
+      }
+  
+      // Check if the model is defined before accessing properties
+      if (model2) {
+          currentRotationAngle2 += rotationSpeed2;
+          model2.rotation.y = currentRotationAngle2; // Use 'model' here
+          model3.rotation.y = -(currentRotationAngle2)+22; // Use 'model' here
+        
+      }
+      currentRotationAngle += rotationSpeed    ; */
+
   // console.log("model2.userData.link");
-    //  if (!disableOrbiting && isTabActive) {
-    //    controls.update(); // Update camera controls
-    //}
-    currentRotationAngle += 0.00017    ;
-    mesh.rotation.y = currentRotationAngle;
-    renderer.render(scene, camera);
-    
+  //  if (!disableOrbiting && isTabActive) {
+  //    controls.update(); // Update camera controls
+  //}
+  currentRotationAngle += 0.00017;
+  mesh.rotation.y = currentRotationAngle;
+  renderer.render(scene, camera);
+
 };
- 
+
 
 
 animate();
